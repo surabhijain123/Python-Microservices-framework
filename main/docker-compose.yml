@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+   api:
+      build:
+         context: .
+         dockerfile: Dockerfile
+      command: "python main.py"
+      volumes:
+         - .:/app
+      ports:
+          - 8001:5000
+
+   queue:
+     build:
+       context: .
+       dockerfile: Dockerfile
