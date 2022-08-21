@@ -26,5 +26,11 @@ urlpatterns = [
         'get': 'retrieve',
         'put': 'update',
         'delete': 'destroy'
+    })),
+    path('countries/name/<str:pk>', CountryViewSet.as_view({
+        'get': 'matching_names'
+    })),
+    path('countries/intersect/<str:pk>', CountryViewSet.as_view({
+        'get': 'intersecting'
     }))]
 

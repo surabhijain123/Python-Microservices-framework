@@ -15,7 +15,6 @@ def add_data():
     values = geojson.loads(r.content)['features']
     for value in values:
         geometry = value['geometry']['type']
-        print(geometry)
         if geometry == 'Polygon':
             g2 = shape({'type': 'MultiPolygon', 'coordinates': [value['geometry']['coordinates']]})
         else:
@@ -24,7 +23,6 @@ def add_data():
                       "iso_a3": value['properties']['ISO_A3'],
                       "geometry_type": geometry,
                       "coordinates": str(g2)}
-        print(value_data)
         serializer = CountrySerializer(data=value_data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -64,3 +62,20 @@ class CountryViewSet(viewsets.ViewSet):
         country.delete()
         return Response(status.HTTP_204_NO_CONTENT)
 
+    def matching_names(self, request, pk=None):
+        countries = Country.objects.filter(admin=pk)
+        data = {'results': []}
+        for country in countries:
+            serializer = CountrySerializer(country)
+            data['results'].append(serializer.data)
+        return Response(data)
+
+    def intersecting(self, request, pk=None):
+        countries = Country.objects.filter(admin=pk)
+        data = {'results': []}
+        for country in countries:
+            intersections = Country.objects.filter(coordinates__intersects=country.coordinates)
+            for value in intersections:
+                serializer = CountrySerializer(value)
+                data['results'].append(serializer.data)
+        return Response(data)
