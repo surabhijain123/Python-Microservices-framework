@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+   api_2:
+      build:
+         context: .
+         dockerfile: Dockerfile
+      command: "python manage.py runserver 0.0.0.0:8000"
+      volumes:
+         - .:/app
+      ports:
+          - 8000:8000
+      depends_on:
+         - postgres-db
+
+   api_1:
+     build:
+       context: .
+       dockerfile: Dockerfile
+     command: "python manage.py runserver 0.0.0.0:8000"
+     volumes:
+       - .:/app
+     ports:
+       - 8005:8000
+     depends_on:
+       - postgres-db
+
+   queue:
+     build:
+       context: .
+       dockerfile: Dockerfile
+     command: 'python consumer.py'
+     depends_on:
+       - postgres-db
+
+   postgres-db:
+      image: kartoza/postgis:12.0
+      ports:
+         - 54322:5432
+      volumes:
+         - postgres_data:/var/lib/postgresql
+      environment:
+        POSTGRES_DATABASE: admin
+        POSTGRES_USER: root
+        POSTGRES_PASSWORD: root
+        POSTGRES_ROOT_PASSWORD: root
+      restart: always
+
+   nginx:
+      restart: always
+      build:
+         context: ./nginx
+         dockerfile: Dockerfile1
+      ports:
+         - 8004:80
+      depends_on:
+      - api_1
+      - api_2
+volumes:
+   postgres_data:

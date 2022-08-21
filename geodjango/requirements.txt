@@ -1,0 +1,10 @@
+Django==3.1.7
+psycopg2-binary==2.8.6
+djangorestframework==3.12.2
+djangorestframework-gis==0.17
+django-cors-headers==3.5.0
+pika==1.1.0
+shapely
+jsonify
+requests
+geojson
