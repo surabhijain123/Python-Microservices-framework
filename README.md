@@ -32,7 +32,7 @@ This is a multi-part project containing following services:
 
 ## WORK AROUND WITH THE APPLICATION
 - Open the browser
-- To populate the database for the very first time, hit http://localhost/api/countries with the put request (not standardized method)
+- To populate the database for the very first time, hit http://localhost:8005/api/countries with the put request (not standardized method)
     - ```PUT http://localhost/api/countries```
 - To fetch the complete database:
     - ```GET http://localhost/api/countries```
