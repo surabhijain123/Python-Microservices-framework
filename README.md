@@ -1,4 +1,4 @@
-# Python-Microservices-framework
+# REST API for spatial data
 
 This is a multi-part project containing following services:
 
