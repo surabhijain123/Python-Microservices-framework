@@ -40,13 +40,13 @@ This is a multi-part project containing following services:
 ## WORK AROUND WITH THE APPLICATION
 - Open the browser
 - To populate the database for the very first time, hit http://localhost:8005/api/countries with the put request (not standardized method)
-    - ```PUT http://localhost/api/countries```
+    - ```PUT http://localhost:8005/api/countries```
 - To fetch the complete database:
-    - ```GET http://localhost/api/countries```
+    - ```GET http://localhost:8005/api/countries```
 - Fetch specific country using id
-    - ```GET http://localhost/api/countries/<str:id>```
+    - ```GET http://localhost:8005/api/countries/<str:id>```
 - Create:
-    - ```POST http://localhost/api/countries```
+    - ```POST http://localhost:8005/api/countries```
       - Sample body:
     ```
     {
@@ -57,7 +57,7 @@ This is a multi-part project containing following services:
     }
     ```
 - Update specific country using id
-    - ```PUT http://localhost/api/countries/<str:id>```
+    - ```PUT http://localhost:8005/api/countries/<str:id>```
       - Sample body:
     ```
     {
@@ -68,10 +68,10 @@ This is a multi-part project containing following services:
     }
     ```
 - Delete specific country using id
-    - ```DELETE http://localhost/api/countries/<str:id>```
+    - ```DELETE http://localhost:8005/api/countries/<str:id>```
 - Non-spatial querying; fetch countries by name:
-    - ```GET http://localhost/api/countries/name/<str:name>```
+    - ```GET http://localhost:8005/api/countries/name/<str:name>```
 - Spatial query; fetch all countring intersecting with a specific country:
-    - ```GET http://localhost/api/countries/intersect/<str:name>```
+    - ```GET http://localhost:8005/api/countries/intersect/<str:name>```
 - Note: Any changes in the database are being monitored in the background and updated
 ![Capture](https://user-images.githubusercontent.com/63467008/185846198-13a2f575-780b-42ac-bee0-771e06afbfb0.PNG)
