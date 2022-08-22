@@ -16,7 +16,7 @@ This is a multi-part project containing following services:
   - Geodjango module listens to the queue and updates the changes in the database
   
 #### 4. Nginx
-  - Nginx acts as the loadbalancer. 2 instances of the 'api' app is created on porst 8000 and 8005. Nginx re-routes the requests to the 2 ports running on the same server (can be changed to apps runniing on different servers). In case, if an instance is down, the other server serves the requests.
+  - Nginx acts as the loadbalancer. 2 instances of the 'api' app is created on ports 8000 and 8005. Nginx re-routes the requests to the 2 ports running on the same server (can be changed to apps running on different servers). In case, if an instance is down, the other server serves the requests.
   
 ## RUN THE APPLICATION
 - Download the repository
@@ -40,8 +40,26 @@ This is a multi-part project containing following services:
     - ```GET http://localhost/api/countries/<str:id>```
 - Create:
     - ```POST http://localhost/api/countries```
+      - Sample body:
+    ```
+    {
+    "admin": "India",
+    "iso_a3": "test_iso_a3",
+    "geometry_type": "MultiPolygon",
+    "coordinates": "MULTIPOLYGON (((0 0, 0 1, 1 1, 1 0, 0 0)))"
+    }
+    ```
 - Update specific country using id
     - ```PUT http://localhost/api/countries/<str:id>```
+      - Sample body:
+    ```
+    {
+    "admin": "India",
+    "iso_a3": "test_iso_a3_changed",
+    "geometry_type": "MultiPolygon",
+    "coordinates": "MULTIPOLYGON (((0 0, 0 1, 1 1, 1 0, 0 0)))"
+    }
+    ```
 - Delete specific country using id
     - ```DELETE http://localhost/api/countries/<str:id>```
 - Non-spatial querying; fetch countries by name:
