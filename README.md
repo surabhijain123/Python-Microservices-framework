@@ -26,7 +26,7 @@ This is a multi-part project containing following services:
   - Nginx acts as the loadbalancer. 2 instances of the 'api' app is created on ports 8000 and 8005. Nginx re-routes the requests to the 2 ports running on the same server (can be changed to apps running on different servers). In case, if an instance is down, the other server serves the requests.
   
 ## RUN THE APPLICATION
-- Download the repository
+- Clone the repository
 - Open a Terminal and enter 'geodjango' directory using: 
   - ```cd geodjango```
 - Run docker compose command: 
