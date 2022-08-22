@@ -1,6 +1,13 @@
 # Python-Microservices-framework
 
 This is a multi-part project containing following services:
+
+
+
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/63467008/185849123-ad1aefe8-16d4-4d45-b62e-36d152d49a7d.png)
+
+
+
 #### 1. Geodjango
   - Connected to postgresql via postgis
   - Populate postgresql database with the geojson present at https://datahub.io/core/geo-countries#resource-geo-countries_zip
